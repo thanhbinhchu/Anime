@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name = "viewport" "width=device-width, initial-scale=1">
+        <title>List of Anime</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+
+    <body>
+
+        <div class="header">
+           <marquee behavior="alternate">
+            <a class = "avatar" href="anime1.html" ><img src="https://stickershop.line-scdn.net/stickershop/v1/product/8453/LINEStorePC/main.png;compress=true" style="width: 10%;" />
+            </a>
+            </marquee></div>
+            
+        </div>
+        <div id="app">
+        <div class="topnav">
+            <div>
+            <a href="anime1.html">Home</a>   
+            <a href="search.html">Search</a>
+            <a><input type="text" v-model="search" placeholder="Search the title of anime" style="width: 500px; height: fit-content" ></a>
+            </div>
+            <a><select name="Rated" placeholder="Rated" v-model="select">
+                <option value="">Rated</option>"
+                <option value="G">G</option>
+                <option value="PG">PG</option>
+                <option value="PG-13">PG-13</option>
+                <option value="R">R</option>
+                <option value="NC-17">NC-17</option>
+                
+            </select></a>
+        </div>
+            <div class="grid-container">
+                
+                <div v-for="(result, index) in filterAnime" :key ="result.mal_id">
+                    
+                    <div class = fonttitle><p>{{ index + 1 }} . <a v-bind:href="result.url"> {{ result.title }} </a> </p></div>
+                    
+                    <div class="more">
+                        <div class="tooltip">
+                           
+                            <div class ="poster"><img :src="result.image_url">
+                            <div class="click">
+                                <p>Rated : {{ result.rated }}</p>  
+                            </div>
+                            </div>
+
+                            <span class="tooltiptext">
+                                <p>{{ result.title }} ({{result.episodes }} episodes) : {{ result.synopsis }}</p>    
+                            </span>
+
+                        </div>
+                    </div>
+                    </div>
+                </div> 
+            
+            </div>
+        
+        </div> 
+     
+    
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+        <script src = "anime.js"></script>
+
+    </body>
+    <footer>
+        <h3>Copyright © 2022 Anime All Rights Reserved</h3>
+    </footer>
+</html>
